@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Zap, Lock, Mail, ArrowLeft, LogIn } from 'lucide-react'
+import { Lock, Mail, ArrowLeft, LogIn } from 'lucide-react'
+import logo from '../assets/logo.png'
 
 export default function Connexion() {
   const navigate = useNavigate()
@@ -16,13 +17,8 @@ export default function Connexion() {
     <div className="flex min-h-screen items-center justify-center bg-white px-4">
       <div className="w-full max-w-sm">
         <div className="mb-8 flex flex-col items-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500">
-            <Zap className="h-6 w-6 text-teal-950" strokeWidth={2.5} />
-          </div>
-          <h1 className="mt-4 text-xl font-bold text-slate-900">
-            PROMI<span className="text-amber-500">&</span>S
-          </h1>
-          <p className="mt-1 text-sm text-slate-500">Connectez-vous à votre espace</p>
+          <img src={logo} alt="PROMI&S" className="h-24 w-auto object-contain" />
+          <p className="mt-2 text-sm text-slate-500">Connectez-vous à votre espace</p>
         </div>
 
         <form

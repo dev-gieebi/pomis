@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Cog } from 'lucide-react'
+import logo from '../assets/logo.png'
 
 export default function PageTransition() {
   const { pathname } = useLocation()
@@ -27,9 +28,7 @@ export default function PageTransition() {
           <Cog className="animate-gear-spin-rev h-9 w-9 text-amber-300" strokeWidth={1.5} />
         </span>
       </div>
-      <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/80">
-        PROMI<span className="text-amber-300">&</span>S
-      </p>
+      <img src={logo} alt="PROMI&S" className="h-14 w-auto object-contain drop-shadow-lg" />
     </div>
   )
 }

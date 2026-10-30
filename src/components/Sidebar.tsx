@@ -3,8 +3,9 @@ import {
   LayoutDashboard, Users, FileText, Briefcase, Receipt,
   Wrench, CalendarDays, Cpu,
   GraduationCap, CalendarRange, UserCheck, Award,
-  Package, ArrowLeftRight, Truck, ScrollText, Settings, Zap,
+  Package, ArrowLeftRight, Truck, ScrollText, Settings,
 } from 'lucide-react'
+import logo from '../assets/logo.png'
 
 interface NavItem {
   to: string
@@ -68,14 +69,9 @@ const groups: NavGroup[] = [
 export default function Sidebar() {
   return (
     <aside className="fixed inset-y-0 left-0 z-30 flex w-64 flex-col border-r border-slate-200 bg-white text-slate-600">
-      <Link to="/" className="flex items-center gap-2.5 border-b border-slate-200 px-5 py-4">
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500">
-          <Zap className="h-5 w-5 text-teal-950" strokeWidth={2.5} />
-        </div>
-        <div>
-          <p className="text-sm font-bold tracking-wide text-teal-950">PROMI<span className="text-amber-500">&</span>S</p>
-          <p className="text-[10px] leading-tight text-slate-500">Maintenance Industrielle & Services</p>
-        </div>
+      <Link to="/" className="flex items-center gap-3 border-b border-slate-200 px-5 py-4">
+        <img src={logo} alt="PROMI&S" className="h-11 w-auto object-contain" />
+        <p className="text-[10px] leading-tight text-slate-500">Maintenance Industrielle<br />& Services</p>
       </Link>
 
       <nav className="flex-1 overflow-y-auto px-3 py-4">

@@ -1,5 +1,6 @@
 import { Link, NavLink, Outlet } from 'react-router-dom'
-import { Zap, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+import logo from '../assets/logo.png'
 import ScrollFab from './ScrollFab'
 
 const links = [
@@ -21,15 +22,7 @@ export default function PublicLayout() {
       <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/85 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-6">
           <Link to="/" className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500">
-              <Zap className="h-5 w-5 text-teal-950" strokeWidth={2.5} />
-            </div>
-            <div>
-              <p className="text-sm font-bold tracking-wide text-teal-950">
-                PROMI<span className="text-amber-500">&</span>S
-              </p>
-              <p className="text-[10px] leading-tight text-slate-500">Maintenance Industrielle & Services</p>
-            </div>
+            <img src={logo} alt="PROMI&S — Maintenance Industrielle & Services" className="h-11 w-auto object-contain" />
           </Link>
 
           <nav className="ml-auto hidden items-center gap-6 md:flex">
@@ -68,12 +61,7 @@ export default function PublicLayout() {
       <footer className="relative border-t border-slate-200 bg-white">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-8">
           <div className="flex items-center gap-2.5">
-            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-amber-500">
-              <Zap className="h-4 w-4 text-teal-950" strokeWidth={2.5} />
-            </div>
-            <p className="text-sm font-semibold text-teal-950">
-              PROMI<span className="text-amber-500">&</span>S
-            </p>
+            <img src={logo} alt="PROMI&S" className="h-9 w-auto object-contain" />
           </div>
           <nav className="flex flex-wrap gap-5 text-xs text-slate-500">
             {links.map((l) => (
