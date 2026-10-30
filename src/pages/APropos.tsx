@@ -89,7 +89,7 @@ export default function APropos() {
             </p>
           </div>
           <div className="mt-8 grid gap-5 sm:grid-cols-3">
-            {valeurs.map((v, i) => (
+            {valeurs.map((v) => (
               <div key={v.title}>
                 <div className="h-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-amber-400">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-100 text-amber-600">

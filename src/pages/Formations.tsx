@@ -55,7 +55,7 @@ export default function Formations() {
         <h2 className="text-lg font-semibold text-slate-900">Sessions en cours et à venir</h2>
         <p className="mt-1 text-sm text-slate-500">Les prochaines dates programmées par notre équipe.</p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {sessionsOuvertes.map((s, i) => {
+          {sessionsOuvertes.map((s) => {
             const t = trainings.find((x) => x.id === s.trainingId)
             if (!t) return null
             const restantes = s.placesMax - s.inscrits
@@ -120,7 +120,7 @@ export default function Formations() {
           </div>
 
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {liste.map((t, i) => {
+            {liste.map((t) => {
               const prochaines = sessionsOuvertes.filter((s) => s.trainingId === t.id)
               return (
                 <div

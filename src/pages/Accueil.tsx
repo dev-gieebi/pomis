@@ -75,7 +75,7 @@ export default function Accueil() {
 
           {/* ── Statistiques animées ── */}
           <div className="mt-16 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {stats.map((s, i) => (
+            {stats.map((s) => (
               <div key={s.label} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                 <p className="text-3xl font-bold text-teal-700">
                   {s.value}{s.suffix}
@@ -108,7 +108,7 @@ export default function Accueil() {
             </div>
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {services.map((s, i) => (
+            {services.map((s) => (
               <Link
                 key={s.title}
                 to="/services"
@@ -144,7 +144,7 @@ export default function Accueil() {
         </div>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {sessionsOuvertes.slice(0, 6).map((s, i) => {
+          {sessionsOuvertes.slice(0, 6).map((s) => {
             const t = trainings.find((x) => x.id === s.trainingId)
             if (!t) return null
             const restantes = s.placesMax - s.inscrits
