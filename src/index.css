@@ -6,10 +6,15 @@
 
 html {
   font-family: var(--font-sans);
+  scroll-behavior: smooth;
 }
 
 body {
   @apply bg-white text-slate-800 antialiased;
+}
+
+::selection {
+  @apply bg-amber-200 text-teal-950;
 }
 
 ::-webkit-scrollbar {
@@ -23,31 +28,52 @@ body {
   background: transparent;
 }
 
-/* ── Engrenages qui tombent (site public) ─────────────────────────────────── */
+/* ── Transition de page : goutte d'eau ────────────────────────────────────── */
 
-@keyframes gear-fall {
+.page-transition {
+  background: linear-gradient(135deg, #134e4a 0%, #0e7490 45%, #f59e0b 130%);
+  animation: droplet-cover 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes droplet-cover {
   0% {
-    transform: translateY(-10vh) rotate(0deg);
-    opacity: 0;
-  }
-  8% {
+    clip-path: circle(0% at 50% 50%);
     opacity: 1;
   }
-  92% {
+  45% {
+    clip-path: circle(120% at 50% 50%);
+    opacity: 1;
+  }
+  70% {
+    clip-path: circle(120% at 50% 50%);
     opacity: 1;
   }
   100% {
-    transform: translateY(108vh) rotate(360deg);
+    clip-path: circle(120% at 50% 50%);
     opacity: 0;
   }
 }
 
-.animate-gear-fall {
-  animation: gear-fall linear infinite;
+@keyframes gear-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-gear-spin {
+  animation: gear-spin 2.4s linear infinite;
+}
+
+.animate-gear-spin-rev {
+  animation: gear-spin 1.4s linear infinite reverse;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-gear-fall {
+  .animate-gear-spin,
+  .animate-gear-spin-rev {
     animation: none;
+  }
+  .page-transition {
+    display: none;
   }
 }

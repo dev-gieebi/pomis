@@ -2,9 +2,14 @@ import { BrowserRouter, Navigate, Outlet, Route, Routes, useParams } from 'react
 import Sidebar from './components/Sidebar'
 import Topbar from './components/Topbar'
 import PublicLayout from './components/PublicLayout'
+import ScrollToTop from './components/ScrollToTop'
+import PageTransition from './components/PageTransition'
 import Accueil from './pages/Accueil'
+import Services from './pages/Services'
 import Formations from './pages/Formations'
 import FormationDetail from './pages/FormationDetail'
+import APropos from './pages/APropos'
+import Contact from './pages/Contact'
 import Connexion from './pages/Connexion'
 import Dashboard from './pages/Dashboard'
 import Clients, { ClientDetail } from './pages/Clients'
@@ -46,11 +51,16 @@ function AppLayout() {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
+      <PageTransition />
       <Routes>
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Accueil />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/formations" element={<Formations />} />
           <Route path="/formations/:id" element={<FormationDetail />} />
+          <Route path="/a-propos" element={<APropos />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
         <Route path="/connexion" element={<Connexion />} />
         <Route path="/app" element={<AppLayout />}>

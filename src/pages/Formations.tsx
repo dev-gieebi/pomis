@@ -55,7 +55,7 @@ export default function Formations() {
         <h2 className="text-lg font-semibold text-slate-900">Sessions en cours et à venir</h2>
         <p className="mt-1 text-sm text-slate-500">Les prochaines dates programmées par notre équipe.</p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {sessionsOuvertes.map((s) => {
+          {sessionsOuvertes.map((s, i) => {
             const t = trainings.find((x) => x.id === s.trainingId)
             if (!t) return null
             const restantes = s.placesMax - s.inscrits
@@ -63,7 +63,7 @@ export default function Formations() {
               <Link
                 key={s.id}
                 to={`/formations/${t.id}`}
-                className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-amber-400"
+                className="block h-full rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-amber-400 hover:shadow-md"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-xs font-semibold text-slate-500">{s.numero}</span>
@@ -120,12 +120,12 @@ export default function Formations() {
           </div>
 
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {liste.map((t) => {
+            {liste.map((t, i) => {
               const prochaines = sessionsOuvertes.filter((s) => s.trainingId === t.id)
               return (
                 <div
                   key={t.id}
-                  className="flex flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-amber-400"
+                  className="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-amber-400 hover:shadow-md"
                 >
                   <div className="flex items-start justify-between">
                     <span className="rounded-md bg-teal-800 px-2 py-1 font-mono text-xs font-semibold text-white">

@@ -1,18 +1,24 @@
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { Zap, ArrowRight } from 'lucide-react'
-import FallingGears from './FallingGears'
+import ScrollFab from './ScrollFab'
 
 const links = [
   { to: '/', label: 'Accueil', end: true },
+  { to: '/services', label: 'Services', end: false },
   { to: '/formations', label: 'Formations', end: false },
+  { to: '/a-propos', label: 'À propos', end: false },
+  { to: '/contact', label: 'Contact', end: false },
 ]
+
+const navBase =
+  'relative py-1 text-sm transition after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:rounded-full after:bg-amber-500 after:transition-all after:duration-300'
 
 export default function PublicLayout() {
   return (
     <div className="min-h-screen bg-white text-slate-800">
-      <FallingGears />
+      <ScrollFab />
 
-      <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
+      <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/85 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-6">
           <Link to="/" className="flex items-center gap-2.5">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500">
@@ -26,20 +32,23 @@ export default function PublicLayout() {
             </div>
           </Link>
 
-          <nav className="ml-auto hidden items-center gap-6 text-sm md:flex">
+          <nav className="ml-auto hidden items-center gap-6 md:flex">
             {links.map((l) => (
               <NavLink
                 key={l.to}
                 to={l.to}
                 end={l.end}
                 className={({ isActive }) =>
-                  `transition ${isActive ? 'font-medium text-teal-700' : 'text-slate-600 hover:text-teal-700'}`
+                  `${navBase} ${
+                    isActive
+                      ? 'font-medium text-teal-800 after:w-full'
+                      : 'text-slate-600 after:w-0 hover:text-teal-800 hover:after:w-full'
+                  }`
                 }
               >
                 {l.label}
               </NavLink>
             ))}
-            <a href="/#contact" className="text-slate-600 transition hover:text-teal-700">Contact</a>
           </nav>
 
           <Link
@@ -66,12 +75,16 @@ export default function PublicLayout() {
               PROMI<span className="text-amber-500">&</span>S
             </p>
           </div>
-          <p className="text-xs text-slate-500">
-            © {new Date().getFullYear()} PROMI&S — Maintenance Industrielle & Services. Tous droits réservés.
+          <nav className="flex flex-wrap gap-5 text-xs text-slate-500">
+            {links.map((l) => (
+              <Link key={l.to} to={l.to} className="transition hover:text-teal-700">
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+          <p className="text-xs text-slate-400">
+            © {new Date().getFullYear()} PROMI&S. Tous droits réservés.
           </p>
-          <Link to="/connexion" className="text-xs font-medium text-teal-700 hover:text-teal-800">
-            Espace client →
-          </Link>
         </div>
       </footer>
     </div>
